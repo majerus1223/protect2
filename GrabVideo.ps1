@@ -33,8 +33,6 @@ $bootstrapData = Invoke-WebRequest -uri $bootstrapURI -Method Get  -ContentType 
 $querydata = $bootstrapData |ConvertFrom-Json
 $camerasToPullData = $querydata.cameras|Select-Object name, id
 
-#List Cameras
-$camerasToPullData
 
 
 
@@ -86,7 +84,7 @@ $mainForm.Text = ”Start time for video”
 $mainForm.Font = $font
 $mainForm.ForeColor = “Black”
 $mainForm.BackColor = “White”
-$mainForm.Width = 300
+$mainForm.Width = 500
 $mainForm.Height = 200
 
 # DatePicker Label
@@ -97,31 +95,17 @@ $datePickerLabel.Height = 22
 $datePickerLabel.Width = 90
 $mainForm.Controls.Add($datePickerLabel)
 
-# MinTimePicker Label
-$minTimePickerLabel = New-Object System.Windows.Forms.Label
-$minTimePickerLabel.Text = “Time”
-$minTimePickerLabel.Location = “15, 45”
-$minTimePickerLabel.Height = 22
-$minTimePickerLabel.Width = 90
-$mainForm.Controls.Add($minTimePickerLabel)
+
 
 
 # DatePicker
 $datePicker = New-Object System.Windows.Forms.DateTimePicker
 $datePicker.Location = “110, 7”
-$datePicker.Width = “150”
+$datePicker.Width = “300”
 $datePicker.Format = [windows.forms.datetimepickerFormat]::custom
-$datePicker.CustomFormat = “MM/dd/yyyy”
+$datePicker.CustomFormat = “MM/dd/yyyy HH:mm:ss”
 $mainForm.Controls.Add($datePicker)
 
-# MinTimePicker
-$minTimePicker = New-Object System.Windows.Forms.DateTimePicker
-$minTimePicker.Location = “110, 42”
-$minTimePicker.Width = “150”
-$minTimePicker.Format = [windows.forms.datetimepickerFormat]::custom
-$minTimePicker.CustomFormat = “HH:mm:ss”
-$minTimePicker.ShowUpDown = $TRUE
-$mainForm.Controls.Add($minTimePicker)
 
 
 # OD Button
@@ -137,7 +121,7 @@ $mainForm.Controls.Add($okButton)
 
 
 
-[string]$startTime = [int](get-date -Date $minTimePicker.Value -UFormat %s -Millisecond 0)
+[string]$startTime = [int](get-date -Date $datePicker.Value -UFormat %s -Millisecond 0)
 $startTime = $startTime+'000'
 
 
@@ -150,7 +134,7 @@ $mainForm.Text = ”Start time for video”
 $mainForm.Font = $font
 $mainForm.ForeColor = “Black”
 $mainForm.BackColor = “White”
-$mainForm.Width = 300
+$mainForm.Width = 500
 $mainForm.Height = 200
 
 # DatePicker Label
@@ -161,31 +145,15 @@ $datePickerLabel.Height = 22
 $datePickerLabel.Width = 90
 $mainForm.Controls.Add($datePickerLabel)
 
-# MinTimePicker Label
-$minTimePickerLabel = New-Object System.Windows.Forms.Label
-$minTimePickerLabel.Text = “Time”
-$minTimePickerLabel.Location = “15, 45”
-$minTimePickerLabel.Height = 22
-$minTimePickerLabel.Width = 90
-$mainForm.Controls.Add($minTimePickerLabel)
-
 
 # DatePicker
 $datePicker = New-Object System.Windows.Forms.DateTimePicker
 $datePicker.Location = “110, 7”
-$datePicker.Width = “150”
+$datePicker.Width = “300”
 $datePicker.Format = [windows.forms.datetimepickerFormat]::custom
-$datePicker.CustomFormat = “MM/dd/yyyy”
+$datePicker.CustomFormat = “MM/dd/yyyy HH:mm:ss”
 $mainForm.Controls.Add($datePicker)
 
-# MinTimePicker
-$minTimePicker = New-Object System.Windows.Forms.DateTimePicker
-$minTimePicker.Location = “110, 42”
-$minTimePicker.Width = “150”
-$minTimePicker.Format = [windows.forms.datetimepickerFormat]::custom
-$minTimePicker.CustomFormat = “HH:mm:ss”
-$minTimePicker.ShowUpDown = $TRUE
-$mainForm.Controls.Add($minTimePicker)
 
 
 # OD Button
@@ -199,7 +167,7 @@ $mainForm.Controls.Add($okButton)
 
 [void] $mainForm.ShowDialog()
 
-[string]$endTime = [int](get-date -Date $minTimePicker.Value -UFormat %s -Millisecond 0)
+[string]$endTime = [int](get-date -Date $datePicker.Value -UFormat %s -Millisecond 0)
 $endTime = $endTime+'000'
 
 
@@ -215,3 +183,6 @@ $savepath = Get-Location
 $savepath = $savepath.Path + '\' +$filename
 Invoke-WebRequest -Uri $exportVideoString -Method Get  -ContentType "application/json" -SessionVariable session -Headers $headers -OutFile $savepath
 
+
+
+Write-host 'your file was saved to ' $savepath
