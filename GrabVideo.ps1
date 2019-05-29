@@ -13,6 +13,9 @@ $filename = 'ProtectVideo.mp4'
 $AllProtocols = [System.Net.SecurityProtocolType]'Ssl3,Tls,Tls11,Tls12'
 [System.Net.ServicePointManager]::SecurityProtocol = $AllProtocols
 
+$oldProgressPreference = $progressPreference;
+$progressPreference = 'SilentlyContinue';
+
 $loginURI = "$baseURI/auth"
 $authUri = "$baseURI/auth/access-key"
 $EpocStart = Get-Date -Date "01/01/1970"
@@ -186,3 +189,5 @@ Invoke-WebRequest -Uri $exportVideoString -Method Get  -ContentType "application
 
 
 Write-host 'your file was saved to ' $savepath
+
+$progressPreference = $oldProgressPreference
