@@ -82,18 +82,18 @@ Add-Type -AssemblyName System.Windows.Forms
 
 # Main Form
 $mainForm = New-Object System.Windows.Forms.Form
-$font = New-Object System.Drawing.Font(“Consolas”, 13)
-$mainForm.Text = ”Start time for video”
+$font = New-Object System.Drawing.Font("Consolas", 13)
+$mainForm.Text = "Start time for video"
 $mainForm.Font = $font
-$mainForm.ForeColor = “Black”
-$mainForm.BackColor = “White”
+$mainForm.ForeColor = "Black"
+$mainForm.BackColor = "White"
 $mainForm.Width = 500
 $mainForm.Height = 200
 
 # DatePicker Label
 $datePickerLabel = New-Object System.Windows.Forms.Label
-$datePickerLabel.Text = “Date”
-$datePickerLabel.Location = “15, 10”
+$datePickerLabel.Text = "Date"
+$datePickerLabel.Location = "15, 10"
 $datePickerLabel.Height = 22
 $datePickerLabel.Width = 90
 $mainForm.Controls.Add($datePickerLabel)
@@ -103,20 +103,20 @@ $mainForm.Controls.Add($datePickerLabel)
 
 # DatePicker
 $datePicker = New-Object System.Windows.Forms.DateTimePicker
-$datePicker.Location = “110, 7”
-$datePicker.Width = “300”
+$datePicker.Location = "110, 7"
+$datePicker.Width = "300"
 $datePicker.Format = [windows.forms.datetimepickerFormat]::custom
-$datePicker.CustomFormat = “MM/dd/yyyy HH:mm:ss”
+$datePicker.CustomFormat = "MM/dd/yyyy HH:mm:ss"
 $mainForm.Controls.Add($datePicker)
 
 
 
 # OD Button
 $okButton = New-Object System.Windows.Forms.Button
-$okButton.Location = “15, 130”
-$okButton.ForeColor = “Black”
-$okButton.BackColor = “White”
-$okButton.Text = “OK”
+$okButton.Location = "15, 130"
+$okButton.ForeColor = "Black"
+$okButton.BackColor = "White"
+$okButton.Text = "OK"
 $okButton.add_Click({$mainForm.close()})
 $mainForm.Controls.Add($okButton)
 
@@ -132,18 +132,18 @@ $startTime = $startTime+'000'
 
 # Main Form
 $mainForm = New-Object System.Windows.Forms.Form
-$font = New-Object System.Drawing.Font(“Consolas”, 13)
-$mainForm.Text = ”Start time for video”
+$font = New-Object System.Drawing.Font("Consolas", 13)
+$mainForm.Text = "Start time for video"
 $mainForm.Font = $font
-$mainForm.ForeColor = “Black”
-$mainForm.BackColor = “White”
+$mainForm.ForeColor = "Black"
+$mainForm.BackColor = "White"
 $mainForm.Width = 500
 $mainForm.Height = 200
 
 # DatePicker Label
 $datePickerLabel = New-Object System.Windows.Forms.Label
-$datePickerLabel.Text = “Date”
-$datePickerLabel.Location = “15, 10”
+$datePickerLabel.Text = "Date"
+$datePickerLabel.Location = "15, 10"
 $datePickerLabel.Height = 22
 $datePickerLabel.Width = 90
 $mainForm.Controls.Add($datePickerLabel)
@@ -151,20 +151,20 @@ $mainForm.Controls.Add($datePickerLabel)
 
 # DatePicker
 $datePicker = New-Object System.Windows.Forms.DateTimePicker
-$datePicker.Location = “110, 7”
-$datePicker.Width = “300”
+$datePicker.Location = "110, 7"
+$datePicker.Width = "300"
 $datePicker.Format = [windows.forms.datetimepickerFormat]::custom
-$datePicker.CustomFormat = “MM/dd/yyyy HH:mm:ss”
+$datePicker.CustomFormat = "MM/dd/yyyy HH:mm:ss"
 $mainForm.Controls.Add($datePicker)
 
 
 
 # OD Button
 $okButton = New-Object System.Windows.Forms.Button
-$okButton.Location = “15, 130”
-$okButton.ForeColor = “Black”
-$okButton.BackColor = “White”
-$okButton.Text = “OK”
+$okButton.Location = "15, 130"
+$okButton.ForeColor = "Black"
+$okButton.BackColor = "White"
+$okButton.Text = "OK"
 $okButton.add_Click({$mainForm.close()})
 $mainForm.Controls.Add($okButton)
 
